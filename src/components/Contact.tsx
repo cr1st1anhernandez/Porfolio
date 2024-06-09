@@ -1,22 +1,15 @@
-import { useState } from 'react';
+import emailjs from '@emailjs/browser';
+import React, { useRef, useState } from 'react';
 import { toast } from 'sonner';
 
 export const Contact = () => {
-	const [formData, setFormData] = useState({
-		name: '',
-		email: '',
-		message: '',
-	});
+	const form = useRef(null);
+	const [name, setName] = useState('');
+	const [email, setEmail] = useState('');
+	const [message, setMessage] = useState('');
 
-	const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-		const { id, value } = e.target;
-		setFormData({ ...formData, [id]: value });
-	};
-
-	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-		const { name, email, message } = formData;
-
 		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 		if (!name || !email || !message) {
@@ -28,27 +21,48 @@ export const Contact = () => {
 			toast.warning('Please enter a valid email address.');
 			return;
 		}
-
-		toast.success('Form submitted successfully!');
-		setFormData({ name: '', email: '', message: '' });
-		console.log('Form data:', formData);
+		if (!form.current) return;
+		const promise = emailjs
+			.sendForm(import.meta.env.VITE_SERVICE_ID, import.meta.env.VITE_TEMPLATE_ID, form.current, {
+				publicKey: import.meta.env.VITE_PUBLIC_KEY,
+			})
+			.then(
+				() => {
+					setName('');
+					setEmail('');
+					setMessage('');
+				},
+				(error) => {
+					console.log('FAILED...', error.text);
+					toast.error('Failed to send email. Please try again.');
+				}
+			);
+		toast.promise(promise, {
+			loading: 'Loading...',
+			success: () => {
+				return 'Email sent successfully:';
+			},
+			error: 'Error sending email',
+		});
 	};
+
 	return (
 		<div className="text-lg bg-[#1D1C20] rounded-lg p-12 font-normal text-neutral-400">
 			<h2 className="text-4xl pb-4 font-bold text-neutral-100">Contact</h2>
 			<div className="flex">
-				<form className="my-8 w-full" onSubmit={handleSubmit}>
+				<form ref={form} className="my-8 w-full" onSubmit={handleSubmit}>
 					<div className="flex flex-col gap-4 mb-4">
 						<label htmlFor="name" className="text-xl text-neutral-300 font-semibold">
 							Name
 						</label>
 						<input
 							id="name"
+							name="user_name"
+							value={name}
+							onChange={(e) => setName(e.target.value)}
 							placeholder="Tyler Durden"
 							type="text"
 							className="bg-[#27272A] outline-none focus:outline-cyan-500 px-4 py-2 rounded-lg border-none transition-all duration-300 ease-in-out text-neutral-300"
-							value={formData.name}
-							onChange={handleChange}
 						/>
 						<label htmlFor="email" className="text-xl text-neutral-300 font-semibold">
 							Email
@@ -57,19 +71,21 @@ export const Contact = () => {
 							id="email"
 							placeholder="TylerDurd3n@mail.com"
 							type="text"
+							name="user_email"
+							value={email}
 							className="bg-[#27272A] outline-none focus:outline-cyan-500 px-4 py-2 rounded-lg border-none transition-all duration-300 text-neutral-300 ease-in-out"
-							value={formData.email}
-							onChange={handleChange}
+							onChange={(e) => setEmail(e.target.value)}
 						/>
 						<label htmlFor="message" className="text-xl text-neutral-300 font-semibold">
 							Message
 						</label>
 						<textarea
 							id="message"
+							name="message"
+							value={message}
+							onChange={(e) => setMessage(e.target.value)}
 							placeholder="I want to collaborate with you to create a website for my social networks."
 							className="bg-[#27272A] text-neutral-300 outline-none focus:outline-cyan-500 px-4 py-2 rounded-lg border-none transition-all duration-300 ease-in-out resize-none"
-							value={formData.message}
-							onChange={handleChange}
 						/>
 					</div>
 
