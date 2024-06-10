@@ -25,9 +25,9 @@ export const Technologies = () => {
 		{ component: NextJsIcon, label: 'NextJs' },
 	];
 	return (
-		<div className="text-lg bg-[#1D1C20] flex flex-col gap-8 rounded-lg p-12 col-span-2 font-normal text-neutral-400">
-			<h2 className="text-4xl pb-4 font-bold text-neutral-100">Technologies</h2>
-			<ul className="grid grid-cols-5 grid-rows-2 gap-4 text-neutral-400">
+		<div className="text-lg bg-[#1D1C20] flex flex-col gap-8 rounded-lg p-6 lg:p-12 col-span-2 font-normal text-neutral-400">
+			<h2 className="text-2xl lg:text-4xl pb-4 font-bold text-neutral-100">Technologies</h2>
+			<ul className="grid md:grid-cols-3 lg:grid-cols-5 grid-cols-2 grid-rows-2 gap-4 text-neutral-400">
 				{icons.map((icon, index) => (
 					<li
 						key={index}

@@ -6,9 +6,12 @@ export const Header = () => {
 	const words = `Software engineer, specialized in web development with springboot on the backend and react on the frontend.`;
 	return (
 		<header className="flex flex-col gap-2 max-w-xl">
-			<div className="flex flex-row gap-4 items-center">
-				<div className="flex border-[#35A2B1] border-2 pt-2 rounded-full overflow-hidden w-20 h-20 bg-[#1D1C20]">
+			<div className="flex flex-col md:flex-row gap-4 items-center">
+				<div className="hidden md:flex border-[#35A2B1] border-2 pt-2 rounded-full overflow-hidden w-20 h-20 bg-[#1D1C20]">
 					<img src={avatar} width={200} height={200} />
+				</div>
+				<div className="flex md:hidden border-[#35A2B1] border-2 pt-2 rounded-full overflow-hidden w-28 h-28 bg-[#1D1C20]">
+					<img src={avatar} width={400} height={400} />
 				</div>
 				<a
 					href="https://www.linkedin.com/in/cristian-neftali-hernandez-ramirez-b17742221/"
@@ -17,12 +20,14 @@ export const Header = () => {
 					Disponible para trabajar
 				</a>
 			</div>
-			<h1 className="text-4xl">
+			<h1 className="text-4xl text-center md:text-left">
 				Hi. I am
 				<span className="text-[#35A2B1] font-extrabold"> Cristian.</span>
 			</h1>
-			<TextGenerateEffect words={words} />
-			<div className="flex flex-row gap-4 items-center">
+			<div className="text-center w-full md:text-left">
+				<TextGenerateEffect words={words} />
+			</div>
+			<div className="flex flex-row gap-4 items-center justify-center md:justify-normal">
 				<a target="_blank" href="https://www.instagram.com/cristian_ncc/">
 					<InstagramIcon width={25} />
 				</a>

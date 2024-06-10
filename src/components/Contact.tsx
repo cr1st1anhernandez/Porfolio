@@ -47,8 +47,8 @@ export const Contact = () => {
 	};
 
 	return (
-		<div className="text-lg bg-[#1D1C20] rounded-lg p-12 font-normal text-neutral-400">
-			<h2 className="text-4xl pb-4 font-bold text-neutral-100">Contact</h2>
+		<div className="text-lg bg-[#1D1C20] rounded-lg p-6 lg:p-12 font-normal text-neutral-400">
+			<h2 className="text-2xl lg:text-4xl lg:pb-4 font-bold text-neutral-100">Contact</h2>
 			<div className="flex">
 				<form ref={form} className="my-8 w-full" onSubmit={handleSubmit}>
 					<div className="flex flex-col gap-4 mb-4">

@@ -1,7 +1,7 @@
 export const Experience = () => {
 	return (
-		<div className="text-lg row-span-1 bg-[#1D1C20] rounded-lg p-12 col-span-2 font-normal text-neutral-400">
-			<h2 className="text-4xl pb-4 font-bold text-neutral-100">Experience</h2>
+		<div className="text-lg row-span-1 bg-[#1D1C20] rounded-lg p-6 lg:p-12 col-span-3 font-normal text-neutral-400 lg:col-span-2">
+			<h2 className="text-2xl lg:text-4xl pb-4 font-bold text-neutral-100">Experience</h2>
 			<ul>
 				<li className="list-disc list-inside font-semibold">Full Stack Development:</li>
 				<ul>
