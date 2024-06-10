@@ -59,7 +59,7 @@ export const PinPerspective = ({
 	color?: string;
 }) => {
 	return (
-		<motion.div className="w-28 lg:w-96 h-80 flex items-center justify-center opacity-0 group-hover/pin:opacity-100 z-[60] transition duration-500">
+		<motion.div className="w-28 md:w-64 lg:w-96 h-80 flex items-center justify-center opacity-0 group-hover/pin:opacity-100 z-[60] transition duration-500">
 			<div className=" w-full h-full -mt-7 flex-none  inset-0">
 				<div className="absolute top-0 inset-x-0  flex justify-center">
 					<a

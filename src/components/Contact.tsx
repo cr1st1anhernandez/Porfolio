@@ -47,7 +47,7 @@ export const Contact = () => {
 	};
 
 	return (
-		<div className="text-lg bg-[#1D1C20] rounded-lg p-6 lg:p-12 font-normal text-neutral-400">
+		<div className="text-lg w-full bg-[#1D1C20] rounded-lg p-6 lg:p-12 font-normal text-neutral-400">
 			<h2 className="text-2xl lg:text-4xl lg:pb-4 font-bold text-neutral-100">Contact</h2>
 			<div className="flex">
 				<form ref={form} className="my-8 w-full" onSubmit={handleSubmit}>
@@ -62,7 +62,7 @@ export const Contact = () => {
 							onChange={(e) => setName(e.target.value)}
 							placeholder="Tyler Durden"
 							type="text"
-							className="bg-[#27272A] outline-none focus:outline-cyan-500 px-4 py-2 rounded-lg border-none transition-all duration-300 ease-in-out text-neutral-300"
+							className="bg-[#27272A] w-full outline-none focus:outline-cyan-500 px-4 py-2 rounded-lg border-none transition-all duration-300 ease-in-out text-neutral-300"
 						/>
 						<label htmlFor="email" className="text-xl text-neutral-300 font-semibold">
 							Email
@@ -73,7 +73,7 @@ export const Contact = () => {
 							type="text"
 							name="user_email"
 							value={email}
-							className="bg-[#27272A] outline-none focus:outline-cyan-500 px-4 py-2 rounded-lg border-none transition-all duration-300 text-neutral-300 ease-in-out"
+							className="bg-[#27272A] w-full outline-none focus:outline-cyan-500 px-4 py-2 rounded-lg border-none transition-all duration-300 text-neutral-300 ease-in-out"
 							onChange={(e) => setEmail(e.target.value)}
 						/>
 						<label htmlFor="message" className="text-xl text-neutral-300 font-semibold">
@@ -85,7 +85,7 @@ export const Contact = () => {
 							value={message}
 							onChange={(e) => setMessage(e.target.value)}
 							placeholder="I want to collaborate with you to create a website for my social networks."
-							className="bg-[#27272A] text-neutral-300 outline-none focus:outline-cyan-500 px-4 py-2 rounded-lg border-none transition-all duration-300 ease-in-out resize-none"
+							className="bg-[#27272A] w-full text-neutral-300 outline-none focus:outline-cyan-500 px-4 py-2 rounded-lg border-none transition-all duration-300 ease-in-out resize-none"
 						/>
 					</div>
 
